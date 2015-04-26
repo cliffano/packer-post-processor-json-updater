@@ -14,7 +14,9 @@ An example scenario is when you have several Packer templates where the built im
 Installation
 ------------
 
-Build `packer-post-processor-json-updater` using `go build` or other build tools, then follow [Packer documentation on installing plugins](https://www.packer.io/docs/extend/plugins.html).
+Download the plugin binaries from [Releases page](https://github.com/cliffano/packer-post-processor-json-updater/releases), or build from source using `go build` or other Go build tools of your choice. Then follow [Packer plugins installation guide](https://www.packer.io/docs/extend/plugins.html).
+
+If you downloaded one of the pre-built binaries, make sure that you rename the binary file to `packer-post-processor-json-updater` (i.e. remove the _os_arch postfix).
 
 Usage
 -----
