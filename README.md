@@ -21,7 +21,7 @@ If you downloaded one of the pre-built binaries, make sure that you rename the b
 Usage
 -----
 
-Add `json-updater` type to Packer template's post-processor section: 
+Add `json-updater` type to Packer template's post-processor section:
 
     "post-processors": [
         {
@@ -32,7 +32,10 @@ Add `json-updater` type to Packer template's post-processor section:
                 ],
                 "templates/child_template_2.json": [
                     "variables.aws_source_ami"
-                ]
+                ],
+                "templates/child_template_3.json": [
+                    "{{ build_name }}.aws_source_ami"
+                ],
             }
         }
     ]
@@ -42,3 +45,5 @@ The above `ami_id` configuration indicates that the ID of the newly created AWS 
     "variables": {
         "aws_source_ami": "<ami_id>"
     }
+
+You can use Configuration Templates, they will be expanded upon Template build time.

@@ -3,12 +3,15 @@ package main
 import (
 	"regexp"
 
-	"github.com/mitchellh/packer/common"
+	"github.com/mitchellh/packer/helper/config"
 	"github.com/mitchellh/packer/packer"
+	"github.com/mitchellh/packer/template/interpolate"
 )
 
 type Config struct {
 	AmiId map[string][]string `mapstructure:"ami_id"`
+
+	ctx interpolate.Context
 }
 
 type PostProcessor struct {
@@ -16,7 +19,14 @@ type PostProcessor struct {
 }
 
 func (p *PostProcessor) Configure(raws ...interface{}) error {
-	_, err := common.DecodeConfig(&p.config, raws...)
+	err := config.Decode(&p.config, &config.DecodeOpts{
+		Interpolate:        true,
+		InterpolateContext: &p.config.ctx,
+		InterpolateFilter: &interpolate.RenderFilter{
+			Exclude: []string{},
+		},
+	}, raws...)
+
 	if err != nil {
 		return err
 	}
