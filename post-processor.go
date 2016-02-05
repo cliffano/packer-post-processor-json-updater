@@ -1,11 +1,13 @@
 package main
 
 import (
-	"regexp"
-
+	// "regexp"
+	// "encoding/json"
+	// "fmt"
 	"github.com/mitchellh/packer/helper/config"
 	"github.com/mitchellh/packer/packer"
 	"github.com/mitchellh/packer/template/interpolate"
+	"strings"
 )
 
 type Config struct {
@@ -38,14 +40,31 @@ func (p *PostProcessor) Configure(raws ...interface{}) error {
 	return nil
 }
 
+func makeAmiList(a packer.Artifact) (map[string]string, error) {
+	type Amis map[string]string
+	amis := make(Amis)
+
+	// converting from Artifact interface via Id()
+	regionAmiList := strings.Split(a.Id(), ",")
+
+	for _, regionAmi := range regionAmiList {
+		// region:ami-id
+		amiInfo := strings.Split(regionAmi, ":")
+		amis[amiInfo[0]] = amiInfo[1]
+	}
+	return amis, nil
+}
+
 func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (packer.Artifact, bool, error) {
 
 	if p.config.AmiId != nil {
-		r, _ := regexp.Compile("ami-[a-z0-9]+")
-		amiId := r.FindString(artifact.Id())
-
 		for file, properties := range p.config.AmiId {
-			err := UpdateJsonFile(file, properties, amiId, ui)
+			amiList, err := makeAmiList(artifact)
+			if err != nil {
+				return artifact, false, err
+			}
+
+			err = UpdateJsonFile(file, properties, amiList, ui, false)
 			if err != nil {
 				return artifact, false, err
 			}
