@@ -1,0 +1,27 @@
+{
+    "builders": [
+        {
+            "access_key": "{{user `aws_access_key_id`}}",
+            "ami_name": "{{user `ami_name`}}",
+            "instance_type": "t2.micro",
+            "region": "ap-southeast-2",
+            "secret_key": "{{user `aws_secret_access_key`}}",
+            "source_ami": "ami-11032472",
+            "ssh_username": "ec2-user",
+            "type": "amazon-ebs"
+        }
+    ],
+    "post-processors": [
+        {
+            "ami_id": {
+                "test-integration/success_result.json": [
+                    "variables.built_ami"
+                ]
+            },
+            "type": "json-updater"
+        }
+    ],
+    "variables": {
+        "ami_name": "packer-post-process-json-updater {{env `BUILD_NUMBER`}}"
+    }
+}
