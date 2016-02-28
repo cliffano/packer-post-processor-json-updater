@@ -3,6 +3,8 @@ language: go
 go:
   - 1.3
   - tip
+before_install:
+  - make tools
 install:
   - go get github.com/jeffail/gabs
   - go get github.com/mitchellh/packer/common
