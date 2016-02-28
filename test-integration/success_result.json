@@ -1,5 +1,6 @@
 {
   "variables": {
-      "built_ami": "to_be_set_by_success_test_integration"
+      "built_ami": "to_be_set_by_success_test_integration",
+      "built_ami_with_interpolation": "to_be_set_by_success_test_integration"
   }
 }
