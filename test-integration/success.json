@@ -15,10 +15,8 @@
         {
             "ami_id": {
                 "test-integration/success_result.json": [
-                    "variables.built_ami"
-                ],
-                "test-integration/success_result.json": [
-                    "variables.built_ami_{{ interpolation_postfix }}"
+                    "variables.built_ami",
+                    "variables.built_ami_{{user `interpolation_postfix` }}"
                 ]
             },
             "type": "json-updater"
