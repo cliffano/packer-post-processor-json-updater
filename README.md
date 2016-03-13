@@ -32,10 +32,7 @@ Add `json-updater` type to Packer template's post-processor section:
                 ],
                 "templates/child_template_2.json": [
                     "variables.aws_source_ami"
-                ],
-                "templates/child_template_3.json": [
-                    "{{ build_name }}.aws_source_ami"
-                ],
+                ]
             }
         }
     ]
@@ -46,4 +43,24 @@ The above `ami_id` configuration indicates that the ID of the newly created AWS 
         "aws_source_ami": "<ami_id>"
     }
 
-You can use Configuration Templates, they will be expanded upon Template build time.
+Variable interpolation is also supported:
+
+    "variables": {
+        "build_id": "build_123"
+    },
+    "post-processors": [
+        {
+            "type": "json-updater",
+            "ami_id": {
+                "templates/child_template_3.json": [
+                    "variables.aws_source_ami_{{user `build_id` }}"
+                ],
+            }
+        }
+    ]
+
+The above `ami_id` configuration indicates that the ID of the newly created AWS AMI will be set as the value of `variables.aws_source_ami_build_123` key in `templates/child_template_3.json` file.
+
+    "variables": {
+        "aws_source_ami_build_123": "<ami_id>"
+    }
