@@ -1,3 +1,6 @@
+clean:
+	rm -f packer-post-processor-json-updater*
+
 tools:
 	go get -u github.com/tools/godep
 	go get -u github.com/golang/lint/golint
