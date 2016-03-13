@@ -11,6 +11,4 @@ install:
   - go get github.com/mitchellh/packer/packer
   - go get github.com/mitchellh/packer/packer/plugin
 script:
-  - make lint style
-  - go test
-  - go build
+  - make lint style test build
