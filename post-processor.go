@@ -47,10 +47,11 @@ func (p *PostProcessor) Configure(raws ...interface{}) error {
 // PostProcess parses the AMI ID from the artifact ID, and then passes the AMI ID
 // to UpdateJSONFile to be set as the new value of the JSON paths properties in
 // Packer template.
+// AWS artifact ID output has the format of <region>:<ami_id>,
+// for example: ap-southeast-2:ami-4f8fae2c
 func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (packer.Artifact, bool, error) {
 
-	ui.Say(fmt.Sprintf("[DEBUG] Artifact ID: %s", artifact.Id()))
-	ui.Say(fmt.Sprintf("[DEBUG] Artifact String: %s", artifact.String()))
+  ui.Say(fmt.Sprintf("%s", artifact.String()))
 
 	if p.config.AmiID != nil {
 		r, _ := regexp.Compile("ami-[a-z0-9]+")
