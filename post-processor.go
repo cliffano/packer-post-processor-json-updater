@@ -26,7 +26,7 @@ type PostProcessor struct {
 // template.
 func (p *PostProcessor) Configure(raws ...interface{}) error {
 	err := config.Decode(&p.config, &config.DecodeOpts{
-		Interpolate: true,
+		Interpolate:        true,
 		InterpolateContext: &p.config.ctx,
 		InterpolateFilter: &interpolate.RenderFilter{
 			Exclude: []string{},
@@ -51,7 +51,7 @@ func (p *PostProcessor) Configure(raws ...interface{}) error {
 // for example: ap-southeast-2:ami-4f8fae2c
 func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (packer.Artifact, bool, error) {
 
-  ui.Say(fmt.Sprintf("%s", artifact.String()))
+	ui.Say(fmt.Sprintf("%s", artifact.String()))
 
 	if p.config.AmiID != nil {
 		r, _ := regexp.Compile("ami-[a-z0-9]+")
