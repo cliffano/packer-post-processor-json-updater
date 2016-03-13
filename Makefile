@@ -29,6 +29,6 @@ test:
 test-integration:
 	packer build \
 		-var-file=$(HOME)/.aws/credentials.json \
-		testdata/success.json
+		testdata/test-integration/success.json
 
 .PHONY: tools deps build lint style test test-integration

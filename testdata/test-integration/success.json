@@ -14,7 +14,7 @@
     "post-processors": [
         {
             "ami_id": {
-                "testdata/success_result.json": [
+                "testdata/test-integration/success_result.json": [
                     "variables.built_ami",
                     "variables.built_ami_{{user `interpolation_postfix` }}"
                 ]
