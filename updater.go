@@ -8,7 +8,10 @@ import (
 	"github.com/mitchellh/packer/packer"
 )
 
-func UpdateJsonFile(file string, paths []string, newValue string, ui packer.Ui) error {
+// UpdateJSONFile sets the value of the JSON paths within the specified file
+// with a new value string, e.g. the AMI ID.
+// The JSON file will also be pretty-printed with 4-spaces indentation.
+func UpdateJSONFile(file string, paths []string, newValue string, ui packer.Ui) error {
 
 	content, err := ioutil.ReadFile(file)
 	if err != nil {
