@@ -25,7 +25,7 @@ func UpdateJSONFile(file string, paths []string, newValue string, ui packer.Ui) 
 
 	for _, path := range paths {
 		oldValue, _ := json.Path(path).Data().(string)
-		ui.Say(fmt.Sprintf("Updating %s from %s to %s in %s...", path, oldValue, newValue, file))
+		ui.Say(fmt.Sprintf("Updating %s from '%s' to '%s' in %s...", path, oldValue, newValue, file))
 		json.SetP(newValue, path)
 	}
 
