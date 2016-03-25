@@ -8,6 +8,9 @@
             "secret_key": "{{user `aws_secret_access_key`}}",
             "source_ami": "ami-11032472",
             "ssh_username": "ec2-user",
+            "tags": {
+              "project": "packer-post-processor-json-updater"
+            },
             "type": "amazon-ebs"
         }
     ],
