@@ -64,3 +64,10 @@ The above `ami_id` configuration indicates that the ID of the newly created AWS 
     "variables": {
         "aws_source_ami_build_123": "<ami_id>"
     }
+
+Colophon
+--------
+
+Articles:
+
+* [Custom AWS AMIs Dependency Tree](http://blog.cliffano.com/2016/03/19/custom-aws-amis-dependency-tree/)
