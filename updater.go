@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
+	"github.com/hashicorp/packer/packer"
 	"github.com/jeffail/gabs"
-	"github.com/mitchellh/packer/packer"
 )
 
 // UpdateJSONFile sets the value of the JSON paths within the specified file

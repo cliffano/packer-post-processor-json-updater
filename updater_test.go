@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-  "github.com/jeffail/gabs"
-	"github.com/mitchellh/packer/packer"
+	"github.com/hashicorp/packer/packer"
+	"github.com/jeffail/gabs"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,7 +25,7 @@ func TestUpdateJSONFileShouldReturnErrorWhenFileDoesNotExist(t *testing.T) {
 
 func TestUpdateJSONFileShouldSetValuesOnMultiPaths(t *testing.T) {
 	file := "testdata/test/update_json_file.json"
-	paths := []string{"variables.variable1","variables.variable2"}
+	paths := []string{"variables.variable1", "variables.variable2"}
 	ui := &packer.BasicUi{
 		Reader:      new(bytes.Buffer),
 		Writer:      new(bytes.Buffer),
