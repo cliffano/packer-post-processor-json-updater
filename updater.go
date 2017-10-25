@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/jeffail/gabs"
+	"github.com/Jeffail/gabs"
 	"github.com/mitchellh/packer/packer"
 )
 
