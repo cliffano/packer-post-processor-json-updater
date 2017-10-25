@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/packer/packer"
-	"github.com/jeffail/gabs"
+  "github.com/Jeffail/gabs"
 	"github.com/stretchr/testify/assert"
 )
 
