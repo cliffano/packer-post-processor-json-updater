@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-
-	"github.com/Jeffail/gabs"
-	"github.com/mitchellh/packer/packer"
+  
+	"github.com/hashicorp/packer/packer"
+  "github.com/Jeffail/gabs"
 )
 
 // UpdateJSONFile sets the value of the JSON paths within the specified file
