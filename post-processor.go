@@ -58,9 +58,14 @@ func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (pac
 		amiID := r.FindString(artifact.Id())
 
 		for file, properties := range p.config.AmiID {
-			err := UpdateJSONFile(file, properties, amiID, ui)
+			err := EnsureJSONFileExists(file)
 			if err != nil {
 				return artifact, false, err
+			} else {
+				err := UpdateJSONFile(file, properties, amiID, ui)
+				if err != nil {
+					return artifact, false, err
+				}
 			}
 		}
 	}

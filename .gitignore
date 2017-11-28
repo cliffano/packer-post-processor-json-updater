@@ -1,2 +1,3 @@
 .DS_Store
 packer-post-processor-json-updater*
+testdata/test/some_ignored_file.json

@@ -3,10 +3,31 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-  
+	"os"
+	"path/filepath"
+
 	"github.com/hashicorp/packer/packer"
   "github.com/Jeffail/gabs"
 )
+
+// Ensure that a file exists. If there are missing directories/sub-directories,
+// they will be created. If the file does not exist, an empty JSON file will be created.
+func EnsureJSONFileExists(file string) error {
+
+  dir := filepath.Dir(file)
+	mkdir_err := os.MkdirAll(dir, os.ModeDir)
+	if mkdir_err != nil {
+		return mkdir_err
+	}
+
+	content := []byte("{}")
+	write_err := ioutil.WriteFile(file, content, 0644)
+	if write_err != nil {
+		return write_err
+	}
+
+	return nil
+}
 
 // UpdateJSONFile sets the value of the JSON paths within the specified file
 // with a new value string, e.g. the AMI ID.

@@ -24,6 +24,7 @@ style:
 	gofmt -w .
 
 test:
+	rm -f testdata/test/some_ignored_file.json
 	go test
 
 test-integration:

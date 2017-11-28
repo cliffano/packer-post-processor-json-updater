@@ -10,6 +10,19 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestEnsureJSONFileExistsShouldReturnErrorWhenDirectoryCannotBeCreated(t *testing.T) {
+	file := "/some_inexisting_path/some_file.json"
+	err := EnsureJSONFileExists(file)
+	assert.Equal(t, err.Error(), "mkdir /some_inexisting_path: permission denied")
+}
+
+func TestEnsureJSONFileExistsShouldCreateJSONFileWhenDirectoryCanBeCreated(t *testing.T) {
+	file := "testdata/test/some_ignored_file.json"
+	_ = EnsureJSONFileExists(file)
+	content, _ := ioutil.ReadFile(file)
+	assert.Equal(t, string(content), "{}")
+}
+
 func TestUpdateJSONFileShouldReturnErrorWhenFileDoesNotExist(t *testing.T) {
 	file := "testdata/some_inexisting_file.json"
 	paths := []string{"some.path.foo.bar"}
