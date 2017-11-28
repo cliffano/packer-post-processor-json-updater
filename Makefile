@@ -28,8 +28,8 @@ test:
 	go test
 
 test-integration:
-	packer build \
-		-var-file=$(HOME)/.aws/credentials.json \
-		testdata/test-integration/success.json
+	BUILD_ID=`date '+%Y%m%d%H%M%S'` \
+	  packer build \
+		testdata/test-integration/success_template.json
 
 .PHONY: tools deps build lint style test test-integration
