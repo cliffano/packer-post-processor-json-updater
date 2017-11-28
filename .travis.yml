@@ -10,4 +10,4 @@ before_install:
 install:
   - make deps
 script:
-  - make lint style test build
+  - make ci

@@ -1,3 +1,5 @@
+ci: clean lint style deps test build
+
 clean:
 	rm -f packer-post-processor-json-updater*
 
@@ -32,4 +34,4 @@ test-integration:
 	  packer build \
 		testdata/test-integration/success_template.json
 
-.PHONY: tools deps build lint style test test-integration
+.PHONY: ci tools deps build lint style test test-integration
