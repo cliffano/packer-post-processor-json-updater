@@ -1,3 +1,6 @@
+### 1.3
+*
+
 ### 1.2
 * A new JSON file containing empty object will be created when file to be updated does not exist
 
