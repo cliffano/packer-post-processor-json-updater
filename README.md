@@ -65,6 +65,19 @@ The above `ami_id` configuration indicates that the ID of the newly created AWS 
         "aws_source_ami_build_123": "<ami_id>"
     }
 
+Testing
+-------
+
+Run unit test:
+
+    make test
+
+Run integration test:
+
+    AWS_PROFILE=<profile_name> make test-integration
+
+This will create an AMI with `project` tag having value `packer-post-processor-json-updater`.
+
 Colophon
 --------
 
