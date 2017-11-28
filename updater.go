@@ -20,10 +20,12 @@ func EnsureJSONFileExists(file string) error {
 		return mkdir_err
 	}
 
-	content := []byte("{}")
-	write_err := ioutil.WriteFile(file, content, 0644)
-	if write_err != nil {
-		return write_err
+	if _, stat_err := os.Stat(file); os.IsNotExist(stat_err) {
+		content := []byte("{}")
+		write_err := ioutil.WriteFile(file, content, 0644)
+		if write_err != nil {
+			return write_err
+		}
 	}
 
 	return nil
