@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 
+  "github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/hashicorp/packer/packer"
 	"github.com/hashicorp/packer/template/interpolate"
@@ -20,6 +21,10 @@ type Config struct {
 // PostProcessor holds the Config object.
 type PostProcessor struct {
 	config Config
+}
+
+func (p *PostProcessor) ConfigSpec() hcldec.ObjectSpec {
+	return p.config.FlatMapstructure().HCL2Spec()
 }
 
 // Configure sets the Config object with configuration values from the Packer
