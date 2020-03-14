@@ -17,13 +17,13 @@ deps:
 	#godep save -r
 
 build:
-	gox -osarch="!plan9/386"
+	bin/gox -osarch="!plan9/386"
 
 lint:
-	golint
+	bin/golint
 
 style:
-	gofmt -w .
+	gofmt -w *.go
 
 test:
 	rm -f testdata/test/some_ignored_file.json
