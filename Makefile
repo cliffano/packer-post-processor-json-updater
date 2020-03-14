@@ -4,7 +4,6 @@ clean:
 	rm -f packer-post-processor-json-updater*
 
 tools:
-	go get -u github.com/tools/godep
 	go get -u golang.org/x/lint/golint
 	go get -u github.com/mitchellh/gox
 
@@ -14,7 +13,6 @@ deps:
 	go get -u github.com/hashicorp/packer/packer
 	go get -u github.com/hashicorp/packer/packer/plugin
 	go get -u github.com/stretchr/testify/assert
-	#godep save -r
 
 build:
 	bin/gox -osarch="!plan9/386"
