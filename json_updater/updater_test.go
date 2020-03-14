@@ -1,4 +1,4 @@
-package json-updater
+package json_updater
 
 import (
 	"bytes"
