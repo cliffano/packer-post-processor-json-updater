@@ -1,3 +1,6 @@
 .DS_Store
 packer-post-processor-json-updater*
 testdata/test/ignored_file.json
+bin/
+pkg/
+src/
