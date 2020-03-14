@@ -8,6 +8,7 @@ tools:
 	go get -u github.com/mitchellh/gox
 
 deps:
+	go get -u github.com/cliffano/packer-post-processor-json-updater
 	go get -u github.com/Jeffail/gabs
 	go get -u github.com/hashicorp/packer/common
 	go get -u github.com/hashicorp/packer/packer

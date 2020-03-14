@@ -1,4 +1,4 @@
-package main
+package json-updater
 
 import (
 	"fmt"

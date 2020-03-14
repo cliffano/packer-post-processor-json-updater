@@ -5,6 +5,7 @@
 * Migrate golint from github.com/golang/lint/golint to golang.org/x/lint/golint
 * Move golint and gox usage to use the binaries on bin/
 * Remove godep usage due to being retired since golang 1.8
+* Move post-processor and updater from main package to json-updater package
 
 ### 1.2
 * A new JSON file containing empty object will be created when file to be updated does not exist
