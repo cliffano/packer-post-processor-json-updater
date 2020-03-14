@@ -10,9 +10,9 @@ tools:
 
 deps:
 	go get -u github.com/Jeffail/gabs
-	go get -u github.com/mitchellh/packer/common
-	go get -u github.com/mitchellh/packer/packer
-	go get -u github.com/mitchellh/packer/packer/plugin
+	go get -u github.com/hashicorp/packer/common
+	go get -u github.com/hashicorp/packer/packer
+	go get -u github.com/hashicorp/packer/packer/plugin
 	go get -u github.com/stretchr/testify/assert
 	#godep save -r
 
