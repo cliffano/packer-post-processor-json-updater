@@ -62,7 +62,7 @@ func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (pac
 			if err != nil {
 				return artifact, false, err
 			}
-			err := UpdateJSONFile(file, properties, amiID, ui)
+			err = UpdateJSONFile(file, properties, amiID, ui)
 			if err != nil {
 				return artifact, false, err
 			}
