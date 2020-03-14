@@ -1,7 +1,7 @@
 ci: clean tools deps lint style test build
 
 clean:
-	rm -f packer-post-processor-json-updater*
+	rm -rf bin/ pkg/ src/ packer-post-processor-json-updater*
 
 tools:
 	go get -u golang.org/x/lint/golint
