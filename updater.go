@@ -10,21 +10,21 @@ import (
 	"github.com/hashicorp/packer/packer"
 )
 
-// Ensure that a file exists. If there are missing directories/sub-directories,
+// EnsureJSONFileExists ensures that a file exists. If there are missing directories/sub-directories,
 // they will be created. If the file does not exist, an empty JSON file will be created.
 func EnsureJSONFileExists(file string) error {
 
 	dir := filepath.Dir(file)
-	mkdir_err := os.MkdirAll(dir, os.ModeDir)
-	if mkdir_err != nil {
-		return mkdir_err
+	mkdirErr := os.MkdirAll(dir, os.ModeDir)
+	if mkdirErr != nil {
+		return mkdirErr
 	}
 
-	if _, stat_err := os.Stat(file); os.IsNotExist(stat_err) {
+	if _, statErr := os.Stat(file); os.IsNotExist(statErr) {
 		content := []byte("{}")
-		write_err := ioutil.WriteFile(file, content, 0644)
-		if write_err != nil {
-			return write_err
+		writeErr := ioutil.WriteFile(file, content, 0644)
+		if writeErr != nil {
+			return writeErr
 		}
 	}
 
