@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"testing"
 
+	"github.com/Jeffail/gabs"
 	"github.com/hashicorp/packer/packer"
-  "github.com/Jeffail/gabs"
 	"github.com/stretchr/testify/assert"
 )
 
