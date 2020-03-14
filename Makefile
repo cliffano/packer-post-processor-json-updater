@@ -1,4 +1,4 @@
-ci: clean lint style deps test build
+ci: clean deps lint style test build
 
 clean:
 	rm -f packer-post-processor-json-updater*
