@@ -18,7 +18,7 @@ style:
 
 test:
 	rm -f testdata/test/some_ignored_file.json
-	go test
+	go test -v ./...
 
 test-integration:
 	BUILD_ID=`date '+%Y%m%d%H%M%S'` \
