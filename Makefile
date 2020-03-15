@@ -7,7 +7,7 @@ deps:
 	go mod download
 
 build:
-	gox -osarch="!plan9/386"
+	gox
 
 lint:
 	go mod verify
