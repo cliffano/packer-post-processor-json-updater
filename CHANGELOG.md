@@ -1,4 +1,4 @@
-### 1.3
+### 2.0.0-pre.0
 * Upgrade to golang 1.14
 * Ignore bin/, pkg/, and src/
 * Migrate packer from mitchellh/packer to hashicorp/packer
