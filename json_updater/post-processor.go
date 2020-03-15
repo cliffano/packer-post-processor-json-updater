@@ -6,20 +6,10 @@ import (
 	"regexp"
 
   "github.com/hashicorp/hcl/v2/hcldec"
-	"github.com/hashicorp/packer/common"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/hashicorp/packer/packer"
 	"github.com/hashicorp/packer/template/interpolate"
 )
-
-// Config is the post-processor configuration with interpolation supported.
-// Currently only supports AWS AMI ID.
-type Config struct {
-	AmiID map[string][]string `mapstructure:"ami_id"`
-  common.PackerConfig `mapstructure:",squash"`
-
-	ctx interpolate.Context
-}
 
 // PostProcessor holds the Config object.
 type PostProcessor struct {
