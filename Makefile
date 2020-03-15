@@ -1,21 +1,17 @@
-ci: clean tools deps lint style test build
+ci: clean deps lint style test build
 
 clean:
 	rm -rf bin/ pkg/ src/ packer-post-processor-json-updater*
-
-tools:
-	go get -u golang.org/x/lint/golint
-	go get -u github.com/mitchellh/gox
 
 deps:
 	go mod download
 
 build:
-	bin/gox -osarch="!plan9/386"
+	gox -osarch="!plan9/386"
 
 lint:
 	go mod verify
-	bin/golint
+	golint
 
 style:
 	gofmt -w *.go
@@ -29,4 +25,4 @@ test-integration:
 	  packer build \
 		testdata/test-integration/success_template.json
 
-.PHONY: ci tools deps build lint style test test-integration
+.PHONY: ci deps build lint style test test-integration
