@@ -8,18 +8,13 @@ tools:
 	go get -u github.com/mitchellh/gox
 
 deps:
-	go get -u github.com/cliffano/packer-post-processor-json-updater
-	go get -u github.com/Jeffail/gabs
-	go get -u github.com/hashicorp/hcl/v2/hcldec
-	go get -u github.com/hashicorp/packer/common
-	go get -u github.com/hashicorp/packer/packer
-	go get -u github.com/hashicorp/packer/packer/plugin
-	go get -u github.com/stretchr/testify/assert
+	go mod download
 
 build:
 	bin/gox -osarch="!plan9/386"
 
 lint:
+	go mod verify
 	bin/golint
 
 style:
