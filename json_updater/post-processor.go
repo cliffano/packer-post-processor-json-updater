@@ -5,6 +5,7 @@ import (
 	"regexp"
 
   "github.com/hashicorp/hcl/v2/hcldec"
+	"github.com/hashicorp/packer/common"
 	"github.com/hashicorp/packer/helper/config"
 	"github.com/hashicorp/packer/packer"
 	"github.com/hashicorp/packer/template/interpolate"
@@ -14,6 +15,7 @@ import (
 // Currently only supports AWS AMI ID.
 type Config struct {
 	AmiID map[string][]string `mapstructure:"ami_id"`
+  common.PackerConfig `mapstructure:",squash"`
 
 	ctx interpolate.Context
 }
@@ -54,7 +56,7 @@ func (p *PostProcessor) Configure(raws ...interface{}) error {
 // Packer template.
 // AWS artifact ID output has the format of <region>:<ami_id>,
 // for example: ap-southeast-2:ami-4f8fae2c
-func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (packer.Artifact, bool, error) {
+func (p *PostProcessor) PostProcess(ctx context.Context, ui packer.Ui, artifact packer.Artifact) (packer.Artifact, bool, bool, error) {
 
 	ui.Say(fmt.Sprintf("%s", artifact.String()))
 
@@ -65,14 +67,14 @@ func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (pac
 		for file, properties := range p.config.AmiID {
 			err := EnsureJSONFileExists(file)
 			if err != nil {
-				return artifact, false, err
+				return artifact, false, false, err
 			}
 			err = UpdateJSONFile(file, properties, amiID, ui)
 			if err != nil {
-				return artifact, false, err
+				return artifact, false, false, err
 			}
 		}
 	}
 
-	return artifact, true, nil
+	return artifact, true, false, nil
 }
