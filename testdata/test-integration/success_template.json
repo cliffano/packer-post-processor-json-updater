@@ -1,7 +1,7 @@
 {
     "builders": [
         {
-            "ami_name": "{{user `ami_name`}}",
+            "ami_name": "{{user `ami_name`}}-json",
             "instance_type": "t2.micro",
             "region": "ap-southeast-2",
             "source_ami": "ami-11032472",
