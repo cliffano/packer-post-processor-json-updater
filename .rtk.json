@@ -1,0 +1,8 @@
+{
+  "resources": [
+    {
+      "path": "CHANGELOG.md",
+      "type": "keep-a-changelog"
+    }
+  ]
+}
