@@ -4,6 +4,8 @@ clean:
 	rm -rf bin/ pkg/ src/ packer-post-processor-json-updater*
 
 deps:
+	go get -u golang.org/x/lint/golint
+	go get -u github.com/mitchellh/gox
 	go mod download
 
 build:
