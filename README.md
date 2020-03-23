@@ -1,6 +1,6 @@
 <img align="right" src="https://raw.github.com/cliffano/packer-post-processor-json-updater/master/avatar.jpg" alt="Avatar"/>
 
-[![Build Status](https://secure.travis-ci.org/cliffano/packer-post-processor-json-updater.png?branch=master)](http://travis-ci.org/cliffano/packer-post-processor-json-updater)
+[![Build Status](https://github.com/cliffano/packer-post-processor-json-updater/workflows/CI/badge.svg)](https://github.com/cliffano/packer-post-processor-json-updater/actions?query=workflow%3ACI)
 
 Packer Post-Processor JSON Updater
 ----------------------------------
