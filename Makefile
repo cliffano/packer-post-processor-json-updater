@@ -9,11 +9,11 @@ deps:
 	go mod download
 
 build:
-	gox
+	${HOME}/go/bin/gox
 
 lint:
 	go mod verify
-	golint
+	${HOME}/go/bin/golint
 
 style:
 	gofmt -w *.go
